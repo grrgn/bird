@@ -38,7 +38,7 @@ RUN sed -i 's/keepalive_timeout/server_tokens off;\n    keepalive_timeout/g' /et
 COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Nginx слушает 80 порт внутри контейнера
-EXPOSE 80
+EXPOSE 80 443 3306
 
 # Запускаем Nginx на переднем плане
 CMD ["nginx", "-g", "daemon off;"]
