@@ -18,6 +18,10 @@ RUN gradle clean build -x test --no-daemon
 # ==============================================================================
 FROM eclipse-temurin:25-jre-alpine
 
+COPY lab.home.crt /usr/local/share/ca-certificates/lab.home.crt
+
+RUN update-ca-certificates
+
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
 WORKDIR /app
